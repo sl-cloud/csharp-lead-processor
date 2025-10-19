@@ -26,21 +26,10 @@ jobs:
         run: dotnet build --configuration Release --no-restore
       
       - name: Run unit tests
-        run: dotnet test --filter "Category=Unit" --configuration Release --no-build --verbosity normal --logger "trx;LogFileName=unit-test-results.trx"
-        continue-on-error: true
+        run: dotnet test --filter "Category=Unit" --configuration Release --no-build --verbosity normal
       
       - name: Run integration tests
-        run: dotnet test --filter "Category=Integration" --configuration Release --no-build --verbosity normal --logger "trx;LogFileName=integration-test-results.trx"
-        continue-on-error: true
-      
-      - name: Publish test results
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: Test Results
-          path: '**/TestResults/*.trx'
-          reporter: dotnet-trx
-          fail-on-error: false
+        run: dotnet test --filter "Category=Integration" --configuration Release --no-build --verbosity normal
       
       - name: Package Lambda function
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
