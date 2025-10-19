@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.SecretsManager" />
+    <PackageReference Include="AWSSDK.SQS" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LeadProcessor.Domain\LeadProcessor.Domain.csproj" />
+    <ProjectReference Include="..\LeadProcessor.Application\LeadProcessor.Application.csproj" />
+  </ItemGroup>
+
+</Project>
