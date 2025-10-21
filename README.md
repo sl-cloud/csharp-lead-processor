@@ -195,10 +195,6 @@ See [`.cursor/rules/ai-agent.mdc`](.cursor/rules/ai-agent.mdc) for complete codi
 
 ## Next Steps
 
-### Phase 2: Domain Layer
-- Implement `Lead` entity with validation rules
-- Create `ILeadRepository` interface
-
 ### Phase 3: Application Layer
 - Create DTOs and MediatR commands
 - Implement FluentValidation validators
