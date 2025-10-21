@@ -7,6 +7,7 @@
     <!-- Application Layer -->
     <PackageVersion Include="MediatR" Version="12.4.1" />
     <PackageVersion Include="FluentValidation" Version="11.10.0" />
+    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
 
     <!-- Infrastructure Layer - EF Core -->
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
@@ -22,8 +23,9 @@
     <PackageVersion Include="Amazon.Lambda.SQSEvents" Version="2.2.0" />
     <PackageVersion Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.3" />
 
-    <!-- Dependency Injection -->
+    <!-- Dependency Injection & Logging -->
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
 
     <!-- Testing Frameworks -->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
