@@ -16,8 +16,13 @@
 
     <!-- Infrastructure Layer - AWS SDK -->
     <PackageVersion Include="AWSSDK.Core" Version="3.7.400.57" />
-    <PackageVersion Include="AWSSDK.SecretsManager" Version="3.7.400.57" />
     <PackageVersion Include="AWSSDK.SQS" Version="3.7.400.57" />
+    
+    <!-- Infrastructure Layer - Cloudvelous AWS SDK -->
+    <PackageVersion Include="Cloudvelous.Aws.Core" Version="1.0.8" />
+    <PackageVersion Include="Cloudvelous.Aws.SecretsManager" Version="1.0.8" />
+    <PackageVersion Include="Cloudvelous.Aws.Rds" Version="1.0.8" />
+    <PackageVersion Include="Cloudvelous.Aws.Sqs" Version="1.0.8" />
 
     <!-- Lambda Layer -->
     <PackageVersion Include="Amazon.Lambda.Core" Version="2.4.0" />
