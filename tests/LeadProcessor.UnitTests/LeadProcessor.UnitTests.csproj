@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="Moq" />
     <PackageReference Include="xunit" />
@@ -25,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\LeadProcessor.Application\LeadProcessor.Application.csproj" />
+    <ProjectReference Include="..\..\src\LeadProcessor.Infrastructure\LeadProcessor.Infrastructure.csproj" />
     <ProjectReference Include="..\LeadProcessor.TestHelpers\LeadProcessor.TestHelpers.csproj" />
   </ItemGroup>
 

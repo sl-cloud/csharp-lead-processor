@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.SecretsManager" />
-    <PackageReference Include="AWSSDK.SQS" />
+    <PackageReference Include="Cloudvelous.Aws.Core" />
+    <PackageReference Include="Cloudvelous.Aws.SecretsManager" />
+    <PackageReference Include="Cloudvelous.Aws.Rds" />
+    <PackageReference Include="Cloudvelous.Aws.Sqs" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" />
   </ItemGroup>

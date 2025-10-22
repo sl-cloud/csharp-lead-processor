@@ -195,11 +195,6 @@ See [`.cursor/rules/ai-agent.mdc`](.cursor/rules/ai-agent.mdc) for complete codi
 
 ## Next Steps
 
-### Phase 3: Application Layer
-- Create DTOs and MediatR commands
-- Implement FluentValidation validators
-- Build command handlers
-
 ### Phase 4: Infrastructure Layer
 - Configure EF Core DbContext
 - Implement repository pattern
