@@ -11,6 +11,7 @@
 
     <!-- Infrastructure Layer - EF Core -->
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.10" />
     <PackageVersion Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
 
     <!-- Infrastructure Layer - AWS SDK -->
