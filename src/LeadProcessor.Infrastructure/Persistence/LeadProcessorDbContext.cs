@@ -120,18 +120,7 @@ public class LeadProcessorDbContext(
     /// </remarks>
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        var modifiedLeadEntries = ChangeTracker.Entries<Lead>()
-            .Where(e => e.State == EntityState.Modified)
-            .ToList();
-
-        foreach (var entry in modifiedLeadEntries)
-        {
-            // Create a new Lead instance with the updated timestamp
-            // This is required because Lead is a record type (immutable)
-            var updatedLead = entry.Entity with { UpdatedAt = dateTimeProvider.UtcNow };
-            entry.CurrentValues.SetValues(updatedLead);
-        }
-
+        UpdateModifiedLeadTimestamps();
         return await base.SaveChangesAsync(cancellationToken);
     }
 
@@ -145,17 +134,40 @@ public class LeadProcessorDbContext(
     /// </remarks>
     public override int SaveChanges(bool acceptAllChangesOnSuccess)
     {
+        UpdateModifiedLeadTimestamps();
+        return base.SaveChanges(acceptAllChangesOnSuccess);
+    }
+
+    /// <summary>
+    /// Updates the UpdatedAt timestamp for all modified Lead entities in the change tracker.
+    /// </summary>
+    /// <remarks>
+    /// This method caches the current UTC time once to ensure all modified entities
+    /// in the same transaction receive the exact same timestamp, maintaining transactional consistency.
+    /// The timestamp update is required to maintain immutability of record types while ensuring audit trail accuracy.
+    /// </remarks>
+    private void UpdateModifiedLeadTimestamps()
+    {
         var modifiedLeadEntries = ChangeTracker.Entries<Lead>()
             .Where(e => e.State == EntityState.Modified)
             .ToList();
 
-        foreach (var entry in modifiedLeadEntries)
+        if (modifiedLeadEntries.Count == 0)
         {
-            var updatedLead = entry.Entity with { UpdatedAt = dateTimeProvider.UtcNow };
-            entry.CurrentValues.SetValues(updatedLead);
+            return;
         }
 
-        return base.SaveChanges(acceptAllChangesOnSuccess);
+        // Cache the timestamp once to ensure all entities get the same value
+        // This maintains transactional consistency
+        var updateTimestamp = dateTimeProvider.UtcNow;
+
+        foreach (var entry in modifiedLeadEntries)
+        {
+            // Create a new Lead instance with the updated timestamp
+            // This is required because Lead is a record type (immutable)
+            var updatedLead = entry.Entity with { UpdatedAt = updateTimestamp };
+            entry.CurrentValues.SetValues(updatedLead);
+        }
     }
 }
 
